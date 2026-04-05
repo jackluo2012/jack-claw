@@ -1,0 +1,30 @@
+[project]
+name = "jackclaw"
+version = "0.1.0"
+description = "JackClaw — 飞书本地工作助手（MVP 重写）"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.9",
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "lark-oapi>=1.0",
+    "croniter>=1.0",
+]
+
+[project.scripts]
+jackclaw = "jackclaw.main:main"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.coverage.run]
+source = ["jackclaw"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 60
+show_missing = true
