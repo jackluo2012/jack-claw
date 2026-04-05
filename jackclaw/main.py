@@ -1,9 +1,9 @@
 """
-JackClaw 进程入口 - Phase 2
+JackClaw 进程入口 - Phase 3
 
 包含：
-- LLM 集成
-- Agent 调度
+- Skill 加载器
+- Skills 生态
 """
 
 from __future__ import annotations
@@ -50,6 +50,9 @@ async def async_main() -> None:
     agent_cfg = cfg.get("agent", {})
     model = agent_cfg.get("model", "qwen-plus")
 
+    skills_cfg = cfg.get("skills", {})
+    skills_dir = Path(skills_cfg.get("local_dir", "./skills")).resolve()
+
     debug_cfg = cfg.get("debug", {})
     enable_test_api = debug_cfg.get("enable_test_api", False)
     test_api_port = debug_cfg.get("test_api_port", 9090)
@@ -62,10 +65,13 @@ async def async_main() -> None:
     if not qwen_api_key:
         logger.warning("QWEN_API_KEY not set")
     llm = AliyunLLM(model=model, api_key=qwen_api_key)
-    logger.info("LLM initialized: model=%s", model)
 
     # Agent
-    agent = MainAgent(llm=llm)
+    agent = MainAgent(
+        llm=llm,
+        skills_dir=skills_dir if skills_dir.exists() else None,
+    )
+    logger.info("Agent initialized, skills_dir=%s", skills_dir)
 
     # Core
     session_mgr = SessionManager(data_dir=data_dir)
@@ -78,7 +84,7 @@ async def async_main() -> None:
         allowed_chats=allowed_chats if allowed_chats else None,
     )
 
-    logger.info("Phase 2 ready")
+    logger.info("Phase 3 ready")
 
     tasks = [asyncio.create_task(run_forever(listener), name="feishu-listener")]
     if enable_test_api:

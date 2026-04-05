@@ -1,15 +1,17 @@
 """
-主 Agent
+主 Agent - Phase 3
 
-Phase 2: 直接调用 LLM
+集成 Skill 加载器
 """
 
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 from jackclaw.llm.aliyun_llm import AliyunLLM
+from jackclaw.tools.skill_loader import SkillLoader
 
 if TYPE_CHECKING:
     from jackclaw.session.models import MessageEntry
@@ -17,25 +19,42 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-_SYSTEM_PROMPT = """\
+_SYSTEM_PROMPT_TEMPLATE = """\
 你是 JackClaw，一个飞书工作助手。
 
-职责：
-- 帮助用户处理日常工作任务
-- 文档处理（PDF、Word、Excel）
-- 信息查询和搜索
-- 日程管理和提醒
+## 可用技能
 
-请用简洁、专业的语言回复。
+{skills_desc}
+
+## 使用说明
+
+- 用户发送文件时，会自动保存到沙盒路径
+- 请根据用户意图选择合适的技能
 """
 
 
 class MainAgent:
     """主 Agent"""
 
-    def __init__(self, llm: AliyunLLM, system_prompt: str = ""):
+    def __init__(
+        self,
+        llm: AliyunLLM,
+        skills_dir: Path | None = None,
+        system_prompt: str = "",
+    ):
         self._llm = llm
-        self._system_prompt = system_prompt or _SYSTEM_PROMPT
+        self._skills_dir = skills_dir
+        self._skill_loader: SkillLoader | None = None
+        self._system_prompt = system_prompt
+        if skills_dir:
+            self._skill_loader = SkillLoader(skills_dir)
+
+    def _build_system_prompt(self) -> str:
+        """构建系统提示"""
+        if self._system_prompt:
+            return self._system_prompt
+        skills_desc = "暂无" if not self._skill_loader else self._skill_loader.get_all_descriptions()
+        return _SYSTEM_PROMPT_TEMPLATE.format(skills_desc=skills_desc)
 
     async def run(
         self,
@@ -51,7 +70,6 @@ class MainAgent:
         reply = await self._llm.chat_with_history(
             user_message=user_message,
             history=history,
-            system_prompt=self._system_prompt,
+            system_prompt=self._build_system_prompt(),
         )
-        logger.info("[%s] Agent reply: %s", session_id[:8], reply[:50] + "...")
         return reply
