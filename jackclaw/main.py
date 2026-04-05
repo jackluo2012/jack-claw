@@ -1,22 +1,23 @@
 """
-JackClaw 进程入口 - Phase 1
+JackClaw 进程入口 - Phase 2
 
 包含：
-- SessionManager
-- Runner
-- FeishuListener
-- TestAPI
+- LLM 集成
+- Agent 调度
 """
 
 from __future__ import annotations
 
 import asyncio
 import logging
+import os
 from pathlib import Path
 
 from lark_oapi.client import Client, LogLevel
 
 from jackclaw.config import load_config, get_feishu_credentials
+from jackclaw.llm.aliyun_llm import AliyunLLM
+from jackclaw.agents.main_agent import MainAgent
 from jackclaw.session.manager import SessionManager
 from jackclaw.runner import Runner
 from jackclaw.feishu.listener import FeishuListener, run_forever
@@ -38,8 +39,6 @@ async def async_main() -> None:
     logger.info("JackClaw starting...")
 
     app_id, app_secret = get_feishu_credentials(cfg)
-    logger.info("Feishu app_id: %s", app_id[:8] + "...")
-
     client = Client.builder().app_id(app_id).app_secret(app_secret).log_level(LogLevel.INFO).build()
 
     data_dir = Path(cfg.get("data_dir", "./data")).resolve()
@@ -48,6 +47,9 @@ async def async_main() -> None:
     feishu_cfg = cfg.get("feishu", {})
     allowed_chats = feishu_cfg.get("allowed_chats", []) or []
 
+    agent_cfg = cfg.get("agent", {})
+    model = agent_cfg.get("model", "qwen-plus")
+
     debug_cfg = cfg.get("debug", {})
     enable_test_api = debug_cfg.get("enable_test_api", False)
     test_api_port = debug_cfg.get("test_api_port", 9090)
@@ -55,28 +57,30 @@ async def async_main() -> None:
     runner_cfg = cfg.get("runner", {})
     idle_timeout = runner_cfg.get("queue_idle_timeout_s", 300.0)
 
+    # LLM
+    qwen_api_key = os.environ.get("QWEN_API_KEY", "")
+    if not qwen_api_key:
+        logger.warning("QWEN_API_KEY not set")
+    llm = AliyunLLM(model=model, api_key=qwen_api_key)
+    logger.info("LLM initialized: model=%s", model)
+
+    # Agent
+    agent = MainAgent(llm=llm)
+
+    # Core
     session_mgr = SessionManager(data_dir=data_dir)
     sender = FeishuSender(client=client)
-
-    runner = Runner(
-        session_mgr=session_mgr,
-        sender=sender,
-        idle_timeout=idle_timeout,
-    )
+    runner = Runner(session_mgr=session_mgr, sender=sender, agent_fn=agent.run, idle_timeout=idle_timeout)
 
     loop = asyncio.get_running_loop()
     listener = FeishuListener(
-        app_id=app_id,
-        app_secret=app_secret,
-        on_message=runner.dispatch,
-        loop=loop,
+        app_id=app_id, app_secret=app_secret, on_message=runner.dispatch, loop=loop,
         allowed_chats=allowed_chats if allowed_chats else None,
     )
 
-    logger.info("Phase 1 ready")
+    logger.info("Phase 2 ready")
 
     tasks = [asyncio.create_task(run_forever(listener), name="feishu-listener")]
-
     if enable_test_api:
         from jackclaw.api.test_server import create_test_app
         test_app = create_test_app(runner=runner, session_mgr=session_mgr)
@@ -91,7 +95,6 @@ async def _run_test_api(app, host: str = "127.0.0.1", port: int = 9090) -> None:
     await app_runner.setup()
     site = web.TCPSite(app_runner, host=host, port=port)
     await site.start()
-    logger.info("TestAPI listening on http://%s:%d", host, port)
     try:
         await asyncio.Event().wait()
     finally:
