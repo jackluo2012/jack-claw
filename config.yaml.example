@@ -1,0 +1,43 @@
+# ============================================
+# JackClaw 配置文件示例
+# ============================================
+# 复制此文件为 config.yaml 并填写实际值
+
+# 工作区配置
+workspace:
+  id: "jack-claw"
+  name: "JackClaw 工作助手"
+  data_dir: "./data"
+
+# 飞书配置
+# 环境变量: FEISHU_APP_ID, FEISHU_APP_SECRET
+feishu:
+  app_id: "${FEISHU_APP_ID}"
+  app_secret: "${FEISHU_APP_SECRET}"
+  # 可选：群消息白名单
+  allowed_chats: []
+
+# Agent 配置
+agent:
+  # 模型: qwen-turbo / qwen-plus / qwen-max
+  model: "qwen-plus"
+  max_iter: 50
+
+# 会话配置
+session:
+  max_history_turns: 20
+
+# 沙盒配置
+sandbox:
+  url: "http://localhost:8022/mcp"
+  timeout_s: 120
+
+# Skills 配置
+skills:
+  local_dir: "./jackclaw/skills"
+
+# 调试配置
+debug:
+  enable_test_api: true
+  test_api_host: "127.0.0.1"
+  test_api_port: 9090
