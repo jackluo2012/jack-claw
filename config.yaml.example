@@ -1,0 +1,28 @@
+workspace:
+  id: "jack-claw"
+  name: "JackClaw 工作助手"
+  data_dir: "./data"
+
+feishu:
+  app_id: "${FEISHU_APP_ID}"
+  app_secret: "${FEISHU_APP_SECRET}"
+  allowed_chats: []
+
+agent:
+  model: "qwen-plus"
+  max_iter: 50
+
+session:
+  max_history_turns: 20
+
+sandbox:
+  url: "http://localhost:8022/mcp"
+  timeout_s: 120
+
+skills:
+  local_dir: "./jackclaw/skills"
+
+debug:
+  enable_test_api: true
+  test_api_host: "127.0.0.1"
+  test_api_port: 9090
