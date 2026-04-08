@@ -1,0 +1,2 @@
+[console_scripts]
+jackclaw = jackclaw.main:main
