@@ -24,6 +24,7 @@ from jackclaw.feishu.sender import FeishuSender
 from jackclaw.sandbox.client import SandboxClient
 from jackclaw.cleanup.service import CleanupService
 from jackclaw.cron.service import CronService
+from jackclaw.observability.metrics_server import start_metrics_server
 
 logger = logging.getLogger(__name__)
 
@@ -81,6 +82,10 @@ async def async_main() -> None:
     enable_test_api = debug_cfg.get("enable_test_api", False)
     test_api_port = debug_cfg.get("test_api_port", 9090)
 
+    observability_cfg = cfg.get("observability", {})
+    enable_metrics = observability_cfg.get("enable_metrics", False)
+    metrics_port = observability_cfg.get("metrics_port", 9091)
+
     runner_cfg = cfg.get("runner", {})
     idle_timeout = runner_cfg.get("queue_idle_timeout_s", 300.0)
 
@@ -124,6 +129,9 @@ async def async_main() -> None:
         asyncio.create_task(run_forever(listener), name="feishu-listener"),
         asyncio.create_task(_daily_cleanup_loop(cleanup_svc), name="cleanup"),
     ]
+    if enable_metrics:
+        tasks.append(asyncio.create_task(start_metrics_server(port=metrics_port), name="metrics-server"))
+        logger.info("Metrics server enabled on port %d", metrics_port)
     if enable_test_api:
         from jackclaw.api.test_server import create_test_app
         test_app = create_test_app(runner=runner, session_mgr=session_mgr)

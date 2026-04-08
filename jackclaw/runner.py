@@ -17,6 +17,13 @@ from typing import TYPE_CHECKING
 from jackclaw.models import InboundMessage, SenderProtocol
 from jackclaw.session.manager import SessionManager
 from jackclaw.session.models import MessageEntry
+from jackclaw.observability.metrics import (
+    feishu_messages_total,
+    runner_workers_active,
+    runner_queue_size,
+    agent_requests_total,
+    agent_errors_total,
+)
 
 if TYPE_CHECKING:
     pass
@@ -55,12 +62,15 @@ class Runner:
 
     async def dispatch(self, inbound: InboundMessage) -> None:
         """消息入队"""
+        feishu_messages_total.inc()
         key = inbound.routing_key
         async with self._dispatch_lock:
             if key not in self._queues:
                 self._queues[key] = asyncio.Queue()
                 self._workers[key] = asyncio.create_task(self._worker(key))
+                runner_workers_active.inc()
         await self._queues[key].put(inbound)
+        runner_queue_size.set(sum(q.qsize() for q in self._queues.values()))
 
     async def shutdown(self) -> None:
         """取消所有 worker"""
@@ -82,17 +92,20 @@ class Runner:
                     if self._workers.get(key) is asyncio.current_task():
                         self._queues.pop(key, None)
                         self._workers.pop(key, None)
+                        runner_workers_active.dec()
                 return
             try:
                 await self._handle(inbound)
             except Exception:
                 logger.exception("[%s] handle error", key)
+                agent_errors_total.inc()
                 try:
                     await self._sender.send_text(key, "处理出错，请稍后重试。", inbound.root_id)
                 except Exception:
                     logger.exception("[%s] send error", key)
             finally:
                 queue.task_done()
+                runner_queue_size.set(sum(q.qsize() for q in self._queues.values()))
 
     async def _handle(self, inbound: InboundMessage) -> None:
         """处理单条消息"""
@@ -103,6 +116,7 @@ class Runner:
             return
         session = await self._session_mgr.get_or_create(key)
         history = await self._session_mgr.load_history(session.id)
+        agent_requests_total.inc()
         reply = await self._agent_fn(inbound.content, history, session.id, inbound.routing_key, inbound.root_id, session.verbose)
         await self._session_mgr.append(session.id, user=inbound.content, assistant=reply, feishu_msg_id=inbound.msg_id)
         await self._sender.send(key, reply, inbound.root_id)
