@@ -14,14 +14,20 @@ workspace:
 feishu:
   app_id: "${FEISHU_APP_ID}"
   app_secret: "${FEISHU_APP_SECRET}"
-  # 可选：群消息白名单
+
+  # 可选：群消息白名单（不填则全部接收）
   allowed_chats: []
+  # allowed_chats:
+  #   - "oc_xxxxxxxxxxxxxxxx"
+  #   - "oc_yyyyyyyyyyyyyyyy"
 
 # Agent 配置
 agent:
-  # 模型: qwen-turbo / qwen-plus / qwen-max
+  # 模型选择: qwen-turbo / qwen-plus / qwen-max
   model: "qwen-plus"
   max_iter: 50
+  # 环境变量: QWEN_API_KEY
+
 
 # 会话配置
 session:
@@ -29,11 +35,17 @@ session:
 
 # 沙盒配置
 sandbox:
+
+  # MVP 本地执行
+  # 改进: 接入 AIO-Sandbox (Docker MCP)
+
   url: "http://localhost:8022/mcp"
   timeout_s: 120
 
 # Skills 配置
 skills:
+
+  # 本地 Skills 目录
   local_dir: "./jackclaw/skills"
 
 # 调试配置
