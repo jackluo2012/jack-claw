@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Prometheus metrics definitions for XiaoPaw."""
+"""Prometheus metrics definitions for JackClaw."""
 
 from typing import Optional
 

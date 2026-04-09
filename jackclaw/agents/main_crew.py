@@ -1,6 +1,6 @@
-"""Main Crew — XiaoPaw 主协调 Crew
+"""Main Crew — JackClaw 主协调 Crew
 
-💡【第03课·Multi-Agent 协作】XiaoPaw 采用"主 Crew + Sub-Crew"两层架构：
+💡【第03课·Multi-Agent 协作】JackClaw 采用"主 Crew + Sub-Crew"两层架构：
    - 主 Crew（本文件）：单 Agent + 单 Task，负责理解用户意图、编排 Skill 调用
    - Sub-Crew（skill_crew.py）：由主 Agent 通过 SkillLoaderTool 动态触发，在沙盒中执行具体任务
    两层之间的上下文完全隔离——Sub-Crew 不知道主 Crew 的历史，主 Crew 只看到 Sub-Crew 的摘要输出
@@ -177,7 +177,7 @@ def _build_crew(
     # 💡【第07课·max_iter】orchestrator_cfg 中包含 max_iter=50，防止主 Agent 无限循环
     orchestrator = Agent(
         **orchestrator_cfg,
-        llm=AliyunLLM(model=model, region="cn", temperature=0.3),
+        llm=AliyunLLM(model=model, temperature=0.3),
         tools=tools,
         # 💡【第02课·ReAct 可视化】verbose=True 让 CrewAI 打印 Thought/Action/Observation
         # 结合 step_callback 可将推理过程实时推送到飞书（详见 _make_step_callback）

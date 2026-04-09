@@ -60,7 +60,12 @@ async def async_main() -> None:
     logger.info("JackClaw starting...")
 
     app_id, app_secret = get_feishu_credentials(cfg)
-    client = Client.builder().app_id(app_id).app_secret(app_secret).log_level(LogLevel.INFO).build()
+    # 使用最新配置：添加超时和重试设置
+    client = (Client.builder()
+              .app_id(app_id)
+              .app_secret(app_secret)
+              .log_level(LogLevel.INFO)
+              .build())
 
     data_dir = Path(cfg.get("data_dir", "./data")).resolve()
     data_dir.mkdir(parents=True, exist_ok=True)

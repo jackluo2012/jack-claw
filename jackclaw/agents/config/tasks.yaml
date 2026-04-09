@@ -1,4 +1,4 @@
-# XiaoPaw 主任务配置
+# JackClaw 主任务配置
 # description 中的 {history}, {user_message} 由 crew.akickoff(inputs=...) 注入
 # 注意：session_id 不通过模板注入，由系统内部管理（安全隔离）
 #

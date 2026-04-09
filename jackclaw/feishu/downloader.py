@@ -29,7 +29,7 @@ class FeishuDownloader:
         attachment: Attachment,
         session_id: str,
     ) -> Path | None:
-        """下载单个附件到本地。
+        """下载单个附件到本地 - 使用最新的飞书资源下载API
 
         Returns:
             下载成功时返回本地绝对路径，失败返回 None。
@@ -59,6 +59,7 @@ class FeishuDownloader:
                 )
                 return None
 
+            # 写入文件
             dest_path.write_bytes(resp.file.read())
             logger.info(
                 "附件下载完成 file_key=%s -> %s (%d bytes)",
@@ -68,8 +69,8 @@ class FeishuDownloader:
             )
             return dest_path
 
-        except Exception:
+        except Exception as e:
             logger.exception(
-                "下载附件异常 msg_id=%s file_key=%s", msg_id, attachment.file_key
+                "下载附件异常 msg_id=%s file_key=%s error=%s", msg_id, attachment.file_key, str(e)
             )
             return None

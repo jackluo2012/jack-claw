@@ -109,6 +109,11 @@ class FeishuListener:
             # 注册空处理器，避免 "processor not found" 警告
             .register_p2_im_chat_access_event_bot_p2p_chat_entered_v1(noop_handler)
             .register_p2_customized_event("p2p_chat_create", noop_handler)
+            # 消息相关事件
+            .register_p2_im_message_message_read_v1(noop_handler)
+            .register_p2_im_message_recalled_v1(noop_handler)
+            .register_p2_im_message_reaction_created_v1(noop_handler)
+            .register_p2_im_message_reaction_deleted_v1(noop_handler)
             .build()
         )
 

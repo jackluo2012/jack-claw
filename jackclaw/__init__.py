@@ -1,7 +1,7 @@
 """
 JackClaw — 飞书本地工作助手
 
-基于 XiaoPaw 重写的 MVP 版本，通过分阶段迭代实现核心功能。
+基于 JackClaw 重写的 MVP 版本，通过分阶段迭代实现核心功能。
 
 架构分层：
 - 接入层: feishu/listener.py, feishu/sender.py

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Logging configuration for XiaoPaw.
+"""Logging configuration for JackClaw.
 
 - 控制台：人类可读格式
 - 文件：JSON 行日志，写入 data/logs/jackclaw.log（滚动）

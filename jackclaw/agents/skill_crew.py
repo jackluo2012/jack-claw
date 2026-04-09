@@ -1,6 +1,6 @@
-"""Sub-Crew 工厂 — XiaoPaw 任务型 Skill 执行层
+"""Sub-Crew 工厂 — JackClaw 任务型 Skill 执行层
 
-💡【第03课·上下文隔离】Sub-Crew 是 XiaoPaw 实现 Multi-Agent 上下文隔离的核心机制：
+💡【第03课·上下文隔离】Sub-Crew 是 JackClaw 实现 Multi-Agent 上下文隔离的核心机制：
    - 主 Crew 的历史对话不传入 Sub-Crew（Sub-Crew 只看到当前任务指令）
    - Sub-Crew 的执行过程不污染主 Crew（主 Crew 只看到 Sub-Crew 的摘要输出）
    - 这就是课程中"Agent 的数字化职能部门"理念的工程实现：
@@ -80,7 +80,7 @@ def build_skill_crew(
         url=sandbox_mcp_url,
     )
 
-    skill_llm = AliyunLLM(model=sub_agent_model, region="cn", temperature=0.3)
+    skill_llm = AliyunLLM(model=sub_agent_model, temperature=0.3)
 
     session_dir = (
         f"/workspace/sessions/{session_id}" if session_id else "/workspace/sessions/<session_id>"

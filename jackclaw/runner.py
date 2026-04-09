@@ -198,11 +198,12 @@ class Runner:
             assistant=reply,
         )
 
-        # 8. 发送回复：优先更新卡片，失败时降级为 send()
+        # 8. 发送回复：删除思考卡片，发送新的文本消息
         if card_msg_id:
-            await self._sender.update_card(card_msg_id, reply)
-        else:
-            await self._sender.send(key, reply, inbound.root_id)
+            # 删除"思考中"卡片（因为 Feishu 不支持将卡片更新为文本）
+            await self._sender.delete_message(card_msg_id)
+        # 发送实际的回复消息
+        await self._sender.send(key, reply, inbound.root_id)
 
     # ── Slash Command ─────────────────────────────────────────
 

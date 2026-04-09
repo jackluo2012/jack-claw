@@ -57,6 +57,6 @@ class IntermediateTool(BaseTool):
         **_: Any,
     ) -> str:
         # 这里不真正持久化，只作为语义上的“checkpoint”，方便 Agent 组织思路。
-        # 如需持久化，可在 XiaoPaw 后续版本中接入 Session / Trace 存储。
+        # 如需持久化，可在 JackClaw 后续版本中接入 Session / Trace 存储。
         return "中间结果已保存，可以进行下一步思考。"
 
