@@ -1,87 +1,106 @@
-"""
-Prometheus 指标
-"""
-
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+"""Prometheus metrics definitions for XiaoPaw."""
+
+from typing import Optional
+
+from prometheus_client import (
+    Counter,
+    Gauge,
+    Histogram,
+    CollectorRegistry,
+    CONTENT_TYPE_LATEST,
+    generate_latest,
+)
 
 
-@dataclass
-class Counter:
-    """计数器"""
-    name: str
-    help_text: str = ""
-    _value: float = 0.0
-
-    def inc(self, amount: float = 1.0) -> None:
-        self._value += amount
-
-    def to_prometheus(self) -> str:
-        lines = []
-        if self.help_text:
-            lines.append(f"# HELP {self.name} {self.help_text}")
-        lines.append(f"# TYPE {self.name} counter")
-        lines.append(f"{self.name} {self._value}")
-        return "\n".join(lines)
+# 使用独立 registry，便于测试与导出
+REGISTRY = CollectorRegistry()
 
 
-@dataclass
-class Gauge:
-    """仪表"""
-    name: str
-    help_text: str = ""
-    _value: float = 0.0
+feishu_events_total = Counter(
+    "jackclaw_feishu_events_total",
+    "Number of Feishu events received via WebSocket",
+    ["event_type", "chat_type"],
+    registry=REGISTRY,
+)
 
-    def set(self, value: float) -> None:
-        self._value = value
+inbound_messages_total = Counter(
+    "jackclaw_inbound_messages_total",
+    "Number of InboundMessage objects dispatched to Runner",
+    ["routing_key_type", "has_attachment"],
+    registry=REGISTRY,
+)
 
-    def inc(self, amount: float = 1.0) -> None:
-        self._value += amount
+runner_workers_active = Gauge(
+    "jackclaw_runner_workers_active",
+    "Number of active per-routing_key workers in Runner",
+    ["routing_key_type"],
+    registry=REGISTRY,
+)
 
-    def dec(self, amount: float = 1.0) -> None:
-        self._value -= amount
+runner_queue_size = Gauge(
+    "jackclaw_runner_queue_size",
+    "Queue size per routing_key in Runner",
+    ["routing_key_type"],
+    registry=REGISTRY,
+)
 
-    def to_prometheus(self) -> str:
-        lines = []
-        if self.help_text:
-            lines.append(f"# HELP {self.name} {self.help_text}")
-        lines.append(f"# TYPE {self.name} gauge")
-        lines.append(f"{self.name} {self._value}")
-        return "\n".join(lines)
+http_requests_total = Counter(
+    "jackclaw_http_requests_total",
+    "HTTP requests handled by TestAPI and metrics endpoints",
+    ["path", "method", "status_code"],
+    registry=REGISTRY,
+)
 
+http_request_duration_seconds = Histogram(
+    "jackclaw_http_request_duration_seconds",
+    "HTTP request duration in seconds",
+    ["path", "method"],
+    registry=REGISTRY,
+)
 
-class Metrics:
-    """指标集合"""
-
-    def __init__(self):
-        self._counters: dict[str, Counter] = {}
-        self._gauges: dict[str, Gauge] = {}
-
-    def counter(self, name: str, help_text: str = "") -> Counter:
-        if name not in self._counters:
-            self._counters[name] = Counter(name=name, help_text=help_text)
-        return self._counters[name]
-
-    def gauge(self, name: str, help_text: str = "") -> Gauge:
-        if name not in self._gauges:
-            self._gauges[name] = Gauge(name=name, help_text=help_text)
-        return self._gauges[name]
-
-    def to_prometheus(self) -> str:
-        lines = []
-        for counter in self._counters.values():
-            lines.append(counter.to_prometheus())
-        for gauge in self._gauges.values():
-            lines.append(gauge.to_prometheus())
-        return "\n".join(lines)
+errors_total = Counter(
+    "jackclaw_errors_total",
+    "Errors encountered by various components",
+    ["component", "error_type"],
+    registry=REGISTRY,
+)
 
 
-# 全局实例
-metrics = Metrics()
+def routing_key_type(routing_key: str) -> str:
+    if routing_key.startswith("p2p:"):
+        return "p2p"
+    if routing_key.startswith("group:"):
+        return "group"
+    if routing_key.startswith("thread:"):
+        return "thread"
+    return "unknown"
 
-feishu_messages_total = metrics.counter("jackclaw_feishu_messages_total", "Total Feishu messages")
-runner_workers_active = metrics.gauge("jackclaw_runner_workers_active", "Active runner workers")
-runner_queue_size = metrics.gauge("jackclaw_runner_queue_size", "Runner queue size")
-agent_requests_total = metrics.counter("jackclaw_agent_requests_total", "Total Agent requests")
-agent_errors_total = metrics.counter("jackclaw_agent_errors_total", "Total Agent errors")
+
+def record_feishu_event(event_type: str, chat_type: Optional[str]) -> None:
+    feishu_events_total.labels(
+        event_type=event_type or "unknown",
+        chat_type=chat_type or "unknown",
+    ).inc()
+
+
+def record_inbound_message(routing_key: str, has_attachment: bool) -> None:
+    inbound_messages_total.labels(
+        routing_key_type=routing_key_type(routing_key),
+        has_attachment="true" if has_attachment else "false",
+    ).inc()
+
+
+def record_error(component: str, error_type: str) -> None:
+    errors_total.labels(
+        component=component,
+        error_type=error_type or "unknown",
+    ).inc()
+
+
+def export_metrics() -> tuple[bytes, str]:
+    """Return Prometheus metrics payload and content type."""
+    data = generate_latest(REGISTRY)
+    return data, CONTENT_TYPE_LATEST
+

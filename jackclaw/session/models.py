@@ -1,6 +1,4 @@
-"""
-Session 数据模型
-"""
+"""Session 数据模型"""
 
 from __future__ import annotations
 
@@ -17,7 +15,7 @@ class MessageRole(str, Enum):
 
 @dataclass
 class MessageEntry:
-    """对话历史中的一条消息"""
+    """JSONL 中的一条对话消息"""
     role: MessageRole
     content: str
     ts: int
@@ -55,23 +53,20 @@ class Session:
     def message_count(self) -> int:
         return len(self.messages)
 
-    def to_dict(self) -> dict:
-        return {
-            "id": self.id,
-            "routing_key": self.routing_key,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
-            "verbose": self.verbose,
-            "messages": [m.to_dict() for m in self.messages],
-        }
 
-    @classmethod
-    def from_dict(cls, data: dict) -> "Session":
-        return cls(
-            id=data["id"],
-            routing_key=data["routing_key"],
-            created_at=data["created_at"],
-            updated_at=data["updated_at"],
-            verbose=data.get("verbose", False),
-            messages=[MessageEntry.from_dict(m) for m in data.get("messages", [])],
-        )
+# 以下为 index.json 格式的轻量级结构（供 SessionManager 内部使用）
+
+@dataclass(frozen=True)
+class SessionEntry:
+    """index.json 中的单个 session 元数据快照"""
+    id: str  # "s-{uuid}"
+    created_at: str  # ISO 8601
+    verbose: bool = False
+    message_count: int = 0
+
+
+@dataclass(frozen=True)
+class RoutingEntry:
+    """index.json 中一个 routing_key 的完整数据"""
+    active_session_id: str
+    sessions: list[SessionEntry] = field(default_factory=list)

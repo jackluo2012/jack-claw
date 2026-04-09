@@ -16,7 +16,8 @@ from lark_oapi.client import Client, LogLevel
 
 from jackclaw.config import load_config, get_feishu_credentials
 from jackclaw.llm.aliyun_llm import AliyunLLM
-from jackclaw.agents.main_agent import MainAgent
+from jackclaw.agents.main_crew import build_agent_fn
+from jackclaw.feishu.downloader import FeishuDownloader
 from jackclaw.session.manager import SessionManager
 from jackclaw.runner import Runner
 from jackclaw.feishu.listener import FeishuListener, run_forever
@@ -77,6 +78,9 @@ async def async_main() -> None:
 
     sandbox_cfg = cfg.get("sandbox", {})
     sandbox_timeout = sandbox_cfg.get("timeout_s", 60)
+    sandbox_url = sandbox_cfg.get("url", "http://localhost:8022/mcp")
+
+    max_history_turns = cfg.get("session", {}).get("max_history_turns", 20)
 
     debug_cfg = cfg.get("debug", {})
     enable_test_api = debug_cfg.get("enable_test_api", False)
@@ -98,20 +102,35 @@ async def async_main() -> None:
     # Sandbox
     sandbox = SandboxClient(workspace_dir=workspace_dir, timeout=sandbox_timeout)
 
-    # Agent
-    agent = MainAgent(llm=llm, skills_dir=skills_dir if skills_dir.exists() else None)
-
     # Core
     session_mgr = SessionManager(data_dir=data_dir)
     sender = FeishuSender(client=client)
+    downloader = FeishuDownloader(client=client, data_dir=data_dir)
     cleanup_svc = CleanupService(data_dir=data_dir)
-    runner = Runner(session_mgr=session_mgr, sender=sender, agent_fn=agent.run, idle_timeout=idle_timeout)
+
+    # Agent
+    agent_fn = build_agent_fn(
+        model=model,
+        sender=sender,
+        max_history_turns=max_history_turns,
+        sandbox_url=sandbox_url,
+    )
+    runner = Runner(
+        session_mgr=session_mgr,
+        sender=sender,
+        agent_fn=agent_fn,
+        downloader=downloader,
+        idle_timeout=idle_timeout,
+    )
 
     # CronService
     cron_svc = CronService(data_dir=data_dir, dispatch_fn=runner.dispatch)
     await cron_svc.start()
 
     # Startup cleanup
+    # 写入飞书凭证到沙盒 .config 目录（凭证不经过 LLM）
+    cleanup_svc.write_feishu_credentials(app_id=app_id, app_secret=app_secret)
+
     try:
         await cleanup_svc.sweep()
     except Exception:

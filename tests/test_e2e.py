@@ -39,6 +39,9 @@ class MockSender:
     async def send_text(self, routing_key: str, content: str, root_id: str = "") -> None:
         await self.send(routing_key, content, root_id)
 
+    async def send_thinking(self, routing_key: str, root_id: str) -> str | None:
+        return None
+
 
 async def test_e2e_message_flow():
     """端到端消息流测试"""

@@ -64,3 +64,27 @@ def build_routing_key(
         return f"thread:{chat_id}:{thread_id}"
     else:
         raise ValueError(f"Unknown routing type: {routing_type}")
+
+
+def resolve_routing_key(
+    chat_type: str,
+    sender_id: str,
+    chat_id: str,
+    thread_id: str | None,
+) -> str:
+    """将飞书事件字段映射为 routing_key 字符串
+    
+    Args:
+        chat_type: 聊天类型 (p2p/group)
+        sender_id: 发送者 open_id
+        chat_id: 聊天 ID
+        thread_id: 话题 ID（可选）
+    
+    Returns:
+        routing_key 字符串
+    """
+    if chat_type == "p2p":
+        return f"p2p:{sender_id}"
+    if thread_id:
+        return f"thread:{chat_id}:{thread_id}"
+    return f"group:{chat_id}"
