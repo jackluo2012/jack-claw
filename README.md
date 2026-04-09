@@ -34,6 +34,7 @@ cp config.yaml.template config.yaml
 # 5. 运行
 jackclaw
 # 或 python -m jackclaw.main
+watchfiles "python -m jackclaw.main" .
 ```
 
 ## 配置项（config.yaml）

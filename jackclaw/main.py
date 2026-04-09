@@ -98,7 +98,7 @@ async def async_main() -> None:
     if not qwen_api_key:
         logger.warning("QWEN_API_KEY not set")
     llm = AliyunLLM(model=model, api_key=qwen_api_key)
-
+    
     # Sandbox
     sandbox = SandboxClient(workspace_dir=workspace_dir, timeout=sandbox_timeout)
 
@@ -137,10 +137,13 @@ async def async_main() -> None:
         logger.warning("Startup cleanup failed", exc_info=True)
 
     loop = asyncio.get_running_loop()
+    # 接收inbound消息
     listener = FeishuListener(
-        app_id=app_id, app_secret=app_secret, on_message=runner.dispatch, loop=loop,
+        app_id=app_id, app_secret=app_secret, on_message=runner.dispatch,
+        loop=loop,
         allowed_chats=allowed_chats if allowed_chats else None,
     )
+    listener.start()
 
     logger.info("Phase 5 ready")
 

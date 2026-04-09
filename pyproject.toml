@@ -12,6 +12,7 @@ dependencies = [
     "prometheus_client",
     "crewai",
     "requests",
+    "watchfiles>=1.1.1",
 ]
 
 [project.scripts]

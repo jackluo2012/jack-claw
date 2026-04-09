@@ -79,6 +79,7 @@ class Runner:
 
     async def dispatch(self, inbound: InboundMessage) -> None:
         """外部入口：消息入队，确保同一会话串行执行"""
+        print(f"[dispatch] {inbound.routing_key}")
         key = inbound.routing_key
         async with self._dispatch_lock:
             if key not in self._queues:
