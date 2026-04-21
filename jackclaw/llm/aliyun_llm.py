@@ -1,5 +1,7 @@
 """
 阿里云通义千问 LLM 适配器
+
+支持通过 LLMConfig 进行模型白名单验证和多 Provider 管理。
 """
 
 from __future__ import annotations
@@ -12,6 +14,8 @@ import aiohttp
 
 from crewai.llm import BaseLLM
 from crewai.utilities.types import LLMMessage
+
+from .llm_config import llm_config
 
 logger = logging.getLogger(__name__)
 
@@ -28,16 +32,32 @@ class AliyunLLM(BaseLLM):
         api_key: str | None = None,
         max_tokens: int = 2000,
         temperature: float = 0.7,
+        validate_model: bool = True,  # 是否验证模型白名单
     ):
+        # 验证模型是否在白名单中
+        if validate_model:
+            llm_config.validate_model(model)
+
+        # 从配置获取 API key（如果未显式提供）
+        if api_key is None:
+            # 尝试从配置中获取 aliyun provider 的 API key
+            api_key = llm_config.get_provider_api_key("aliyun")
+            if not api_key:
+                # 回退到环境变量
+                api_key = os.environ.get("QWEN_API_KEY", "")
+
         # Initialize BaseLLM with required fields
         super().__init__(
             model=model,
             temperature=temperature,
-            api_key=api_key or os.environ.get("QWEN_API_KEY", ""),
+            api_key=api_key,
         )
         self._max_tokens = max_tokens
         if not self.api_key:
-            raise ValueError("QWEN_API_KEY not set")
+            raise ValueError(
+                "API Key 未设置。请设置 QWEN_API_KEY 环境变量，"
+                "或者在 llm_config.yaml 中配置 api_key_env"
+            )
 
     def call(
         self,

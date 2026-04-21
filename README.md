@@ -37,23 +37,96 @@ jackclaw
 watchfiles "python -m jackclaw.main" .
 ```
 
-## 配置项（config.yaml）
+## 配置项
+
+### config.yaml
 
 ```yaml
 feishu:
   app_id: "cli_xxxxx"
   app_secret: "xxxxx"
 
-llm:
-  provider: "aliyun"  # 或 openai
-  api_key: "sk-xxx"
-  model: "qwen-turbo"
+agent:
+  model: "qwen3-max-preview"        # 主 Agent 模型
+  sub_agent_model: "qwen3-max-2025-09-23"  # 子 Agent 模型
+  max_iter: 50
+  max_input_tokens: 30000
+  timeout_s: 300
 
 observability:
   metrics_port: 9091
 
 data_dir: "./data"
 ```
+
+### LLM 配置
+
+新增的 LLM 配置系统支持**模型白名单**和**多 Provider**管理。
+
+配置文件位置: `jackclaw/llm/llm_config.yaml`
+
+```yaml
+# 默认 Provider
+default:
+  provider: aliyun
+  text_model: qwen-max
+
+# Provider 定义
+providers:
+  aliyun:
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    api_key_env: QWEN_API_KEY  # 从环境变量读取
+    models:                     # 白名单：只允许使用这些模型
+      - qwen-max
+      - qwen-plus
+      - qwen-turbo
+      # ... 更多模型
+
+  openrouter:
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    models:
+      - openai/gpt-4o
+      - anthropic/claude-sonnet-4-20250514
+      # ... 更多模型
+
+# 角色模型映射（可选）
+models:
+  assistant:
+    model: qwen3-max-preview
+    temperature: 0.7
+  sub_agent:
+    model: qwen3-max-2025-09-23
+    temperature: 0.7
+  lightweight:
+    model: qwen3-turbo
+    temperature: 0.3
+```
+
+**使用方式:**
+
+```python
+from jackclaw.llm import LLMFactory, llm_config
+
+# 创建默认 LLM
+llm = LLMFactory.create()
+
+# 为特定角色创建 LLM
+assistant_llm = LLMFactory.create_for_role("assistant")
+sub_agent_llm = LLMFactory.create_for_role("sub_agent")
+
+# 验证模型是否在白名单中
+llm_config.validate_model("qwen-max")  # 通过则无异常，不通过则抛出 ValueError
+
+# 列出允许的模型
+models = LLMFactory.list_allowed_models()
+```
+
+**核心功能:**
+- ✅ **模型白名单** - 只允许使用配置中列出的模型，防止误用未授权的昂贵模型
+- ✅ **多 Provider** - 支持同时配置多个 LLM Provider（阿里云、OpenRouter 等）
+- ✅ **角色映射** - 不同角色（助手/子 Agent/轻量级任务）使用不同模型
+- ✅ **配置验证** - 创建 LLM 时自动验证模型是否在白名单中
 
 ## 测试
 
