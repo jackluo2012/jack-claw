@@ -19,14 +19,14 @@ version: "1.0"
 
 ## 功能说明
 
-在 pgvector 数据库中搜索 XiaoPaw 的历史对话记忆，支持三种搜索模式的混合使用。
+在 pgvector 数据库中搜索 JackClaw 的历史对话记忆，支持三种搜索模式的混合使用。
 
 ---
 
 ## 数据库结构
 
 连接信息（从环境变量读取）：
-- DSN：`MEMORY_DB_DSN`，默认 `postgresql://xiaopaw:xiaopaw123@localhost:5432/xiaopaw_memory`
+- DSN：`MEMORY_DB_DSN`，默认 `postgresql://JackClaw:JackClaw123@localhost:5432/JackClaw_memory`
 
 `memories` 表字段说明：
 

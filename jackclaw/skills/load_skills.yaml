@@ -1,4 +1,4 @@
-# Skill 清单 — XiaoPaw 小爪子工作助手
+# Skill 清单 — JackClaw 小爪子工作助手
 #
 # type 字段区分 Skill 的执行方式：
 #   task      → 触发独立 Sub-Crew 在 AIO-Sandbox 中执行（需要代码运行）

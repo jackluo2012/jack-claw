@@ -31,6 +31,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.mcp import MCPServerHTTP
 
 from jackclaw.llm.aliyun_llm import AliyunLLM
+from jackclaw.llm.factory import LLMFactory
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +57,7 @@ def build_skill_crew(
     skill_instructions: str,
     session_id: str = "",
     sandbox_mcp_url: str = _DEFAULT_SANDBOX_MCP_URL,
-    sub_agent_model: str = "qwen3-max",
+    sub_agent_model: str | None = None,
     max_iter: int = 20,
 ) -> Crew:
     """
@@ -80,7 +81,11 @@ def build_skill_crew(
         url=sandbox_mcp_url,
     )
 
-    skill_llm = AliyunLLM(model=sub_agent_model, temperature=0.3)
+    # 如果没有指定模型，使用配置文件中 sub_agent 角色的模型
+    if sub_agent_model is None:
+        skill_llm = LLMFactory.create_for_role("sub_agent")
+    else:
+        skill_llm = AliyunLLM(model=sub_agent_model, temperature=0.3)
 
     session_dir = (
         f"/workspace/sessions/{session_id}" if session_id else "/workspace/sessions/<session_id>"

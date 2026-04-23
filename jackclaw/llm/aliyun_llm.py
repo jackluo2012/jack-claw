@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import os
 from typing import Any
@@ -69,17 +70,59 @@ class AliyunLLM(BaseLLM):
         from_agent: Any | None = None,
         response_model: type[Any] | None = None,
     ) -> str | Any:
-        """同步调用 Chat API (CrewAI 接口)"""
+        """同步调用 Chat API (CrewAI 接口)
+
+        💡【异步兼容】智能检测运行环境：
+        - 无事件循环：使用 asyncio.run() 创建新循环
+        - 有事件循环（如在 @before_llm_call hook 中）：在新线程中创建新循环运行
+        """
         import asyncio
-        return asyncio.run(self.acall(
-            messages=messages,
-            tools=tools,
-            callbacks=callbacks,
-            available_functions=available_functions,
-            from_task=from_task,
-            from_agent=from_agent,
-            response_model=response_model,
-        ))
+        import threading
+
+        async def _acall_wrapper():
+            return await self.acall(
+                messages=messages,
+                tools=tools,
+                callbacks=callbacks,
+                available_functions=available_functions,
+                from_task=from_task,
+                from_agent=from_agent,
+                response_model=response_model,
+            )
+
+        try:
+            # 尝试获取当前运行中的事件循环
+            asyncio.get_running_loop()
+
+            # 💡 如果已经在异步上下文中，需要在新线程中运行以避免事件循环冲突
+            result = [None]
+            exception = [None]
+
+            def run_in_thread():
+                try:
+                    new_loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(new_loop)
+                    try:
+                        result[0] = new_loop.run_until_complete(_acall_wrapper())
+                    finally:
+                        new_loop.close()
+                except Exception as e:
+                    exception[0] = e
+
+            thread = threading.Thread(target=run_in_thread, daemon=True)
+            thread.start()
+            thread.join(timeout=30)  # 30秒超时
+
+            if exception[0]:
+                raise exception[0]
+            if result[0] is None:
+                raise RuntimeError("LLM call timeout or failed to complete")
+
+            return result[0]
+
+        except RuntimeError:
+            # 没有运行中的事件循环，可以安全地使用 asyncio.run()
+            return asyncio.run(_acall_wrapper())
 
     async def acall(
         self,
@@ -112,17 +155,39 @@ class AliyunLLM(BaseLLM):
         }
 
         try:
+            # 配置更合理的超时时间
+            # connect: 连接超时, sock: 读取超时, total: 总超时
+            timeout_config = aiohttp.ClientTimeout(
+                total=300,      # 总超时 5 分钟
+                connect=30,     # 连接超时 30 秒
+                sock_read=270   # 读取超时 4.5 分钟
+            )
+
             async with aiohttp.ClientSession() as session:
+                logger.info(f"正在调用 LLM API: model={self.model}, max_tokens={self._max_tokens}")
+
                 async with session.post(
-                    url, headers=headers, json=payload, timeout=aiohttp.ClientTimeout(total=60)
+                    url, headers=headers, json=payload, timeout=timeout_config
                 ) as resp:
                     if resp.status != 200:
                         text = await resp.text()
-                        logger.warning("LLM API error: %s - %s", resp.status, text)
-                        return "LLM 调用失败"
+                        logger.error(f"LLM API 返回错误: status={resp.status}, response={text}")
+                        return f"LLM 调用失败 (HTTP {resp.status})"
+
                     data = await resp.json()
                     content = data["output"]["choices"][0]["message"]["content"]
+                    logger.info(f"LLM API 调用成功: model={self.model}, response_length={len(content)}")
                     return self._apply_stop_words(content)
-        except Exception:
-            logger.exception("LLM call failed")
-            return "LLM 调用异常"
+
+        except asyncio.TimeoutError:
+            logger.error(f"LLM API 调用超时: model={self.model}, timeout=300s")
+            return "LLM 调用超时，请检查网络连接或稍后重试"
+        except aiohttp.ClientError as e:
+            logger.error(f"LLM API 网络错误: model={self.model}, error={str(e)}")
+            return f"LLM 网络错误: {str(e)}"
+        except KeyError as e:
+            logger.error(f"LLM API 响应格式错误: model={self.model}, missing_key={e}")
+            return "LLM 响应格式错误"
+        except Exception as e:
+            logger.exception(f"LLM call failed: model={self.model}, error={str(e)}")
+            return f"LLM 调用异常: {str(e)}"

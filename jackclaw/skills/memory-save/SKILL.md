@@ -30,13 +30,13 @@ allowed-tools:
 
 | target | 写到哪里 | 适合存什么 |
 |--------|---------|-----------|
-| soul | /workspace/soul.md | XiaoPaw 自身设置（名字、人设、性格）|
+| soul | /workspace/soul.md | JackClaw 自身设置（名字、人设、性格）|
 | user | /workspace/user.md | 用户偏好、习惯、个人信息 |
 | agent | /workspace/agent.md | Agent 行为规范的增量更新 |
 | memory_index | /workspace/memory.md | 新增一条主题索引（只写指针，不写内容）|
 | topic | /workspace/memory_<name>.md | 某主题的详细内容（同时自动更新 memory.md）|
 
-**文件分工原则**：soul = XiaoPaw 自身（名字/人设/性格）；user = 用户信息（偏好/背景/禁忌）；agent = 流程 SOP；memory topic = 其他领域内容。
+**文件分工原则**：soul = JackClaw 自身（名字/人设/性格）；user = 用户信息（偏好/背景/禁忌）；agent = 流程 SOP；memory topic = 其他领域内容。
 
 ## 步骤
 
@@ -80,7 +80,7 @@ allowed-tools:
 
 **target = soul：**
 - 读取 `/workspace/soul.md`，用 `str_replace` 精准替换需要修改的字段
-- 典型场景：初始引导时用户为 XiaoPaw 起名，将 `## 名字\nXiaoPaw` 替换为 `## 名字\n{用户指定名}`
+- 典型场景：初始引导时用户为 JackClaw 起名，将 `## 名字\nJackClaw` 替换为 `## 名字\n{用户指定名}`
 - soul.md 由工程师维护核心人设，**只允许更新已有字段，禁止增删 section**
 
 **target = user：**
@@ -112,7 +112,7 @@ memory.md 是导航地图，不是记录本。
 
 正确格式：
 ```markdown
-# XiaoPaw 记忆索引
+# JackClaw 记忆索引
 
 ## 用户偏好
 → 详见 user.md（Bootstrap 直接注入，此处不重复）
