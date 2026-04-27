@@ -137,6 +137,7 @@ class FeishuListener:
         """
         try:
             logger.info("Connecting to Feishu WebSocket...")
+            logger.info("Using app_id: %s (len=%d)", self._app_id, len(self._app_id))
             self._ws_client.start()
         except Exception as e:
             logger.exception("WebSocket client error: %s", e)

@@ -55,7 +55,7 @@ def on_message_received(event: P2ImMessageReceiveV1) -> None:
     print(f"[消息 #{msg_count}] 收到飞书消息事件！")
     print(f"{'='*60}")
     
-    try:
+    try: 
         msg = event.event.message
         sender = event.event.sender
         

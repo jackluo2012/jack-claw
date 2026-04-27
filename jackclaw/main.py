@@ -32,15 +32,6 @@ from jackclaw.observability.logging_config import setup_logging
 logger = logging.getLogger(__name__)
 
 
-def _load_config(config_path: Path) -> dict:
-    if not config_path.exists():
-        raise FileNotFoundError(
-            f"config.yaml not found at {config_path}. 请先复制 config.yaml.template 并填写配置。"
-        )
-    data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
-    return data
-
-
 async def _daily_cleanup_loop(cleanup_svc: CleanupService) -> None:
     import datetime
     import zoneinfo
@@ -66,7 +57,7 @@ async def async_main() -> None:
     # 加载配置
     repo_root = Path(__file__).resolve().parents[1]
     config_path = repo_root / "config.yaml"
-    cfg = _load_config(config_path)
+    cfg = load_config(config_path)
 
     # 记录启动日志
     # ── 1. 日志初始化 ──────────────────────────────────────────────────────
@@ -289,7 +280,7 @@ def main() -> None:
     # 读取配置文件以获取 data_dir
     repo_root = Path(__file__).resolve().parents[1]
     config_path = repo_root / "config.yaml"
-    cfg = _load_config(config_path)
+    cfg = load_config(config_path)
     data_dir = Path(cfg.get("data_dir", "./data")).resolve()
 
     # 设置日志
