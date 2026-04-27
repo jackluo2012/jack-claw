@@ -55,3 +55,5 @@ htmlcov/
 *.tmp
 *.temp
 test_sdk.py
+data/workspace/.config
+baidu.json
