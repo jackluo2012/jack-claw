@@ -48,32 +48,39 @@ def update_config_yaml(config_file, model, max_tokens):
 
     try:
         with open(config_file, 'r', encoding='utf-8') as f:
-            content = f.read()
+            lines = f.readlines()
 
-        # 更新 agent.model
-        content = re.sub(
-            r'(agent:\s*\n\s*model:\s*)"([^"]*)"',
-            rf'\g<1>{model}"',
-            content
-        )
-
-        # 更新 agent.max_input_tokens (使用配额的 80% 作为输入限制，留一些余量)
+        # 查找并更新 agent 配置块
+        in_agent_block = False
         max_input = int(max_tokens * 0.8)
-        content = re.sub(
-            r'(agent:\s*[^:]*:\s*\n\s*max_input_tokens:\s*)\d+',
-            rf'\g<1>{max_input}',
-            content
-        )
 
-        # 更新 sub_agent_model (也使用最大模型)
-        content = re.sub(
-            r'(agent:\s*[^:]*:\s*\n\s*sub_agent_model:\s*)"([^"]*)"',
-            rf'\g<1>{model}"',
-            content
-        )
+        for i in range(len(lines)):
+            # 检测 agent: 块开始
+            if re.match(r'^agent:\s*$', lines[i]):
+                in_agent_block = True
+                continue
+
+            # 在 agent 块内更新配置
+            if in_agent_block:
+                # 检测是否离开 agent 块（遇到新的顶层键）
+                if re.match(r'^\w+\s*:', lines[i]) and not lines[i].startswith(' '):
+                    in_agent_block = False
+                    continue
+
+                # 更新 model（支持带引号和不带引号两种格式）
+                if re.match(r'\s+model:\s*\S+', lines[i]):
+                    lines[i] = re.sub(r'(model:\s*)\S+', rf'\g<1>{model}', lines[i])
+
+                # 更新 max_input_tokens
+                if re.match(r'\s+max_input_tokens:\s*\d+', lines[i]):
+                    lines[i] = re.sub(r'(max_input_tokens:\s*)\d+', rf'\g<1>{max_input}', lines[i])
+
+                # 更新 sub_agent_model（支持带引号和不带引号两种格式）
+                if re.match(r'\s+sub_agent_model:\s*\S+', lines[i]):
+                    lines[i] = re.sub(r'(sub_agent_model:\s*)\S+', rf'\g<1>{model}', lines[i])
 
         with open(config_file, 'w', encoding='utf-8') as f:
-            f.write(content)
+            f.writelines(lines)
 
         print(f"✓ 已更新配置文件: {config_file}", file=sys.stderr)
         print(f"  - 模型: {model}", file=sys.stderr)

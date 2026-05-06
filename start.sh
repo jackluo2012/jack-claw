@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# JackClaw 一键启动脚本
+# JackClaw 启动脚本
 
 set -e
 
@@ -8,15 +8,9 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-info() {
-    echo -e "${GREEN}[INFO]${NC} $1"
-}
+info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 
-warn() {
-    echo -e "${YELLOW}[WARN]${NC} $1"
-}
-
-# 获取项目根目录
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT"
 
@@ -39,16 +33,15 @@ if [ ! -d ".venv" ]; then
     exit 1
 fi
 
-# 检查配置文件
 if [ ! -f "config.yaml" ]; then
     warn "配置文件不存在，请先运行 ./init.sh 进行初始化"
     exit 1
 fi
 
-# 清理 __pycache__，避免缓存导致旧代码生效
+# 清理 __pycache__
 find "$PROJECT_ROOT/jackclaw" -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
 
-# 自动更新最大 Token 配额
+# Token 配额
 QUOTA_FILE="${QUOTA_FILE:-$PROJECT_ROOT/quota.json}"
 if [ -f "$QUOTA_FILE" ]; then
     info "检测到配额文件，正在更新最大 Token 配额..."
@@ -58,20 +51,11 @@ if [ -f "$QUOTA_FILE" ]; then
         warn "⚠ Token 配置更新失败，使用现有配置"
     fi
     echo ""
-else
-    info "未找到配额文件 ($QUOTA_FILE)"
-    info "提示: 可设置 QUOTA_FILE 环境变量指定配额文件路径，或将配额文件保存为 $PROJECT_ROOT/quota.json"
-    echo ""
 fi
 
-# 显示启动信息
 info "启动 JackClaw 服务..."
 info "项目目录: $PROJECT_ROOT"
 echo ""
 
-# 启动服务（后台运行，记录 PID）
-nohup .venv/bin/python3 -m jackclaw.main >> "$PROJECT_ROOT/data/logs/jackclaw.log" 2>&1 &
-echo $! > "$PID_FILE"
-info "JackClaw 已后台启动 (PID $(cat "$PID_FILE"))"
-info "日志文件: $PROJECT_ROOT/data/logs/jackclaw.log"
-info "停止服务: ./stop.sh"
+# 启动服务（前台运行，日志直接输出到终端）
+exec .venv/bin/python3 -m jackclaw.main

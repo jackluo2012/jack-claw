@@ -149,8 +149,17 @@ class CleanupService:
 
         文件权限设为 0o600（仅属主可读），目录权限设为 0o700，
         防止同宿主机其他用户或容器内非 root 进程读取凭证。
+
+        安全说明：
+        - 此文件仅用于沙盒进程访问飞书 API
+        - 凭证已在 .env 中配置，通过 config.py 统一加载
+        - 文件已加入 .gitignore，不会被提交到版本控制
         """
         import json
+
+        if not app_id or not app_secret:
+            logger.warning("cleanup: 飞书凭证为空，跳过写入 feishu.json")
+            return
 
         config_dir = self._data_dir / "workspace" / ".config"
         config_dir.mkdir(parents=True, exist_ok=True)
@@ -173,6 +182,11 @@ class CleanupService:
 
         文件权限设为 0o600（仅属主可读），与 feishu.json 保持一致。
         若 api_key 为空则跳过（百度搜索 Skill 不可用，但不阻断主流程）。
+
+        安全说明：
+        - 此文件仅用于沙盒进程访问百度 API
+        - 凭证已在 .env 中配置，通过 config.py 统一加载
+        - 文件已加入 .gitignore，不会被提交到版本控制
         """
         import json
 

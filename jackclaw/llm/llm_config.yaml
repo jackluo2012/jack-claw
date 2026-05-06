@@ -6,9 +6,9 @@
 # 默认 provider（优先使用）
 default:
   provider: aliyun
-  text_model: qwen-max
-  image_model: qvq-plus
-  summary_model: qwen3-turbo
+  text_model: qwen-plus-latest
+  image_model: qwen-vl-plus-latest
+  summary_model: qwen-turbo
   temperature: 0.7
   retry_count: 2
   timeout: 600
@@ -82,13 +82,13 @@ providers:
 # ============================================================
 models:
   assistant:
-    model: qwen3-max-preview
+    model: qwen-plus-latest
     temperature: 0.7
   lightweight:
-    model: qwen3-turbo
+    model: qwen-turbo
     temperature: 0.3
   vision:
-    model: qvq-plus
+    model: qwen-vl-plus-latest
     temperature: 0.7
   coder:
     model: qwen-coder-plus
@@ -97,7 +97,7 @@ models:
     model: qwen-long
     temperature: 0.7
   sub_agent:
-    model: qwen3-max-2025-09-23
+    model: qwen-turbo
     temperature: 0.7
 
 # ============================================================

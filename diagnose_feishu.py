@@ -30,7 +30,7 @@ if not app_id or not app_secret:
     sys.exit(1)
 
 print(f"App ID: {app_id}")
-print(f"App Secret: {app_secret[:10]}...")
+print(f"App Secret: {'*' * 10} (已隐藏)")
 print()
 
 # 测试获取 tenant_access_token

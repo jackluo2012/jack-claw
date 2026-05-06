@@ -140,9 +140,10 @@ async def async_main() -> None:
     
     # 写入飞书凭证到沙盒 .config 目录（凭证不经过 LLM）
     cleanup_svc.write_feishu_credentials(app_id=app_id, app_secret=app_secret)
-    
+
     # 写入百度千帆 API Key 到沙盒 .config 目录（支持 baidu_search Skill）
-    baidu_api_key = cfg.get("baidu", {}).get("api_key", "") or os.environ.get("BAIDU_API_KEY", "")
+    # 注意：BAIDU_API_KEY 已通过 config.py 和 config.yaml 统一加载
+    baidu_api_key = cfg.get("baidu", {}).get("api_key", "")
     cleanup_svc.write_baidu_credentials(api_key=baidu_api_key)    
     
     # 启动时执行一次存储清理（清除历史残留）

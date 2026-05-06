@@ -1,54 +1,1932 @@
 {
-    "code":"200",
-    "data":{
-        "DataV2":{
-            "ret":[
+    "code": "200",
+    "data": {
+        "DataV2": {
+            "ret": [
                 "SUCCESS::接口调用成功"
             ],
-            "data":{
-                "codeEnum":"SUCCESS",
-                "code":"200",
-                "data":{
-                    "freeTierQuotas":[
+            "data": {
+                "codeEnum": "SUCCESS",
+                "code": "200",
+                "data": {
+                    "freeTierQuotas": [
                         {
-                            "quotaInitTotal":1000000.0,
-                            "quotaValidityPeriod":1780243200000,
-                            "freeTierOnly":true,
-                            "quotaTotalPercentage":100.0,
-                            "model":"qvq-max-2025-03-25",
-                            "quotaTotal":1000000.0,
-                            "quotaStatus":"VALID"
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-max-2025-03-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
                         },
                         {
-                            "quotaInitTotal":1000000.0,
-                            "quotaValidityPeriod":1780243200000,
-                            "freeTierOnly":true,
-                            "quotaTotalPercentage":100.0,
-                            "model":"qwen-math-turbo",
-                            "quotaTotal":1000000.0,
-                            "quotaStatus":"VALID"
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-turbo",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
                         },
                         {
-                            "quotaInitTotal":1.0E+7,
-                            "quotaValidityPeriod":1780243200000,
-                            "freeTierOnly":true,
-                            "quotaTotalPercentage":100.0,
-                            "model":"qwen-turbo-1101",
-                            "quotaTotal":1.0E+7,
-                            "quotaStatus":"VALID"
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-235b-a22b-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
                         },
                         {
-                            "quotaInitTotal":2000000.0,
-                            "quotaValidityPeriod":1780222231792,
-                            "freeTierOnly":true,
-                            "quotaTotalPercentage":100.0,
-                            "model":"llama-4-maverick-17b-128e-instruct",
-                            "quotaTotal":2000000.0,
-                            "quotaStatus":"VALID"
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-turbo-0919",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-math-7b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-vl-72b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus-2025-05-07",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-32b-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1-distill-qwen-7b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-vl-3b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "glm-5",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-mt-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-14b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-30b-a3b-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1782921600000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 67.83,
+                            "model": "qwen3.6-plus",
+                            "quotaTotal": 678266.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-32b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-7b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-2025-08-13",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784217600000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.6-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1-distill-qwen-32b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-long",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.5-35b-a3b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-max-2025-01-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "glm-4.5-air",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-480b-a35b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-8b-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.5-flash-2026-02-23",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr-1028",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-flash-2025-10-15",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-14b-instruct-1m",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-8b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-0112",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 66.14,
+                            "model": "qwen-plus",
+                            "quotaTotal": 661431.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "gui-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 99.99,
+                            "model": "qwen-turbo",
+                            "quotaTotal": 999905.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-0.6b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-max",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus-2025-08-15",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-coder-14b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-next-80b-a3b-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.5-27b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-turbo-0919",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "tongyi-xiaomi-analysis-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-plus-0919",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-14b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-32b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-turbo-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "MiniMax-M2.5",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 55.62,
+                            "model": "qwen3-max-2025-09-23",
+                            "quotaTotal": 556174.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-2025-12-01",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-character",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-flash-character",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1-distill-qwen-14b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "MiniMax-M2.1",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-turbo-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-max-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-30b-a3b-instruct-2507",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-flash",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-flash-2025-07-28",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-235b-a22b-instruct-2507",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 21.76,
+                            "model": "qwen-max-latest",
+                            "quotaTotal": 217595.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-plus-2025-07-22",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784736000000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 99.98,
+                            "model": "qwen3.5-plus-2026-04-20",
+                            "quotaTotal": 999783.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "kimi-k2.5",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-coder-32b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784563200000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "kimi-k2.6",
+                            "quotaTotal": 999980.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-long-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-max-0428",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr-2025-04-13",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-1220",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.5-122b-a10b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr-2025-11-20",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-plus-1106",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-2025-04-02",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-1119",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-2025-04-08",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "tongyi-intent-detect-v3",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-1230",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-7b-instruct-1m",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 99.0,
+                            "model": "qwen3.5-plus-2026-02-15",
+                            "quotaTotal": 989999.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-plus-2025-05-15",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-235b-a22b-thinking-2507",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1783958400000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 99.98,
+                            "model": "glm-5.1",
+                            "quotaTotal": 999761.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-vl-7b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwq-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "kimi-k2-thinking",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784476800000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 95.46,
+                            "model": "qwen3.6-max-preview",
+                            "quotaTotal": 954581.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus-0102",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-v3.1",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.5-397b-a17b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-plus-2025-09-23",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-v3.2",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-next",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-plus-0816",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "tongyi-xiaomi-analysis-pro",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 95.12,
+                            "model": "qwen3.5-flash",
+                            "quotaTotal": 951156.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-32b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784822400000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 20.95,
+                            "model": "deepseek-v4-flash",
+                            "quotaTotal": 209548.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-max-2025-05-15",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-30b-a3b-thinking-2507",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwq-32b-preview",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-72b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-plus-2025-09-23",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-3b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-turbo-2025-02-11",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 84.81,
+                            "model": "qwen3-max-2026-01-23",
+                            "quotaTotal": 848124.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "Moonshot-Kimi-K2-Instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1.0E+7,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 94.57,
+                            "model": "qwen-turbo-1101",
+                            "quotaTotal": 9457291.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-2025-09-11",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-flash-2026-01-22",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-30b-a3b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-30b-a3b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-235b-a22b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-flash-character-2026-02-26",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784736000000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.6-27b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-4b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-235b-a22b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-coder-7b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-mt-lite",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-2025-01-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-1.7b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-plus-2025-01-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784217600000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.6-flash-2026-04-16",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-turbo-2025-07-15",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 96.0,
+                            "model": "qwen3-vl-plus",
+                            "quotaTotal": 960030.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-turbo-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-turbo-2025-04-28",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-vl-32b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-30b-a3b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "glm-4.5",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-mt-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "glm-4.6",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-coder-turbo",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-max-0919",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "glm-4.7",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-8b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-ocr-2025-08-28",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-coder-flash-2025-07-28",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1781452800000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "gui-plus-2026-02-26",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-v3",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwq-32b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-vl-plus-2025-12-19",
+                            "quotaTotal": 999979.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-2025-04-28",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-mt-turbo",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-vl-max-2025-01-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 99.75,
+                            "model": "qwen3.5-plus",
+                            "quotaTotal": 997495.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-long-2025-01-25",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1784217600000,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3.6-35b-a3b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-plus-2025-07-14",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen-math-plus-latest",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 100000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qvq-72b-preview",
+                            "quotaTotal": 100000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwq-plus",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1782921600000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 75.87,
+                            "model": "qwen3.6-plus-2026-04-02",
+                            "quotaTotal": 758716.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-math-72b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1-0528",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwq-plus-2025-03-05",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen3-next-80b-a3b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780243200000,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-v3.2-exp",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "freeTierOnly": true,
+                            "model": "qwen-max",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "freeTierOnly": false,
+                            "model": "deepseek-v4-pro",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "freeTierOnly": false,
+                            "model": "qwen3-max",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "freeTierOnly": true,
+                            "model": "qwen3-max-preview",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "freeTierOnly": true,
+                            "model": "qwen-plus-2025-07-28",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "quotaInitTotal": 2000000.0,
+                            "quotaValidityPeriod": 1780222231792,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "llama-4-maverick-17b-128e-instruct",
+                            "quotaTotal": 2000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 2000000.0,
+                            "quotaValidityPeriod": 1780222231785,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "llama-4-scout-17b-16e-instruct",
+                            "quotaTotal": 2000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780222230620,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-0.5b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780222231289,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "deepseek-r1-distill-llama-70b",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 1000000.0,
+                            "quotaValidityPeriod": 1780222230624,
+                            "freeTierOnly": true,
+                            "quotaTotalPercentage": 100.0,
+                            "model": "qwen2.5-1.5b-instruct",
+                            "quotaTotal": 1000000.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen-deep-research-2025-12-15",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen-deep-research",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "kimi/kimi-k2.6",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "MiniMax/MiniMax-M2.7",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "kimi/kimi-k2.5",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "MiniMax/MiniMax-M2.5",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "MiniMax/MiniMax-M2.1",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen-vl-plus-2025-07-10",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen3-vl-2b-instruct",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "deepseek-r1-distill-llama-8b",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "deepseek-r1-distill-qwen-1.5b",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-v3.2-think",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen-doc-turbo",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-v3.2-speciale",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-v3.1-terminus",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-v3",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-r1",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "vanchin/deepseek-ocr",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen3-vl-8b-base",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen3-4b-instruct-2507",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen3-vl-4b-instruct",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "siliconflow/deepseek-r1-0528",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "siliconflow/deepseek-v3-0324",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "siliconflow/deepseek-v3.1-terminus",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "siliconflow/deepseek-v3.2",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen3-vl-1b-base",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "qwen-plus-character-2025-11-06",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "farui-plus",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
+                        },
+                        {
+                            "quotaInitTotal": 0.0,
+                            "freeTierOnly": false,
+                            "quotaTotalPercentage": 0.0,
+                            "model": "baichuan2-turbo",
+                            "quotaTotal": 0.0,
+                            "quotaStatus": "VALID"
                         }
-                    ]
-                }
+                    ],
+                    "freeTierQuotaOverview": {
+                        "modelsWithQuotaAbove50Percent": 177,
+                        "modelsWithZeroQuota": 34,
+                        "totalModelCount": 213,
+                        "modelsWithQuotaBetween20And50Percent": 2,
+                        "topThreeLeastQuotaModels": [
+                            {
+                                "quotaInitTotal": 1000000.0,
+                                "quotaValidityPeriod": 1784822400000,
+                                "freeTierOnly": false,
+                                "quotaTotalPercentage": 20.95,
+                                "model": "deepseek-v4-flash",
+                                "quotaTotal": 209548.0,
+                                "quotaStatus": "VALID"
+                            },
+                            {
+                                "quotaInitTotal": 1000000.0,
+                                "quotaValidityPeriod": 1780243200000,
+                                "freeTierOnly": true,
+                                "quotaTotalPercentage": 21.76,
+                                "model": "qwen-max-latest",
+                                "quotaTotal": 217595.0,
+                                "quotaStatus": "VALID"
+                            },
+                            {
+                                "quotaInitTotal": 1000000.0,
+                                "quotaValidityPeriod": 1780243200000,
+                                "freeTierOnly": true,
+                                "quotaTotalPercentage": 55.62,
+                                "model": "qwen3-max-2025-09-23",
+                                "quotaTotal": 556174.0,
+                                "quotaStatus": "VALID"
+                            }
+                        ],
+                        "modelsWithQuotaBetween0And20Percent": 0
+                    },
+                    "taskId": "2677e05e-fac2-4a43-8da3-cb5175d045d4"
+                },
+                "success": true
             }
-        }
-    }
+        },
+        "success": true,
+        "httpStatus": 200,
+        "errorCode": "",
+        "api": "zeldaEasy.broadscope-bailian.freeTrial.queryFreeTierQuotaAsyn",
+        "errorMsg": ""
+    },
+    "httpStatusCode": "200",
+    "requestId": "6388ae9c-a6ea-41ce-b28e-06a54125b26e",
+    "successResponse": true
 }

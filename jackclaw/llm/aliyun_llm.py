@@ -40,11 +40,12 @@ class AliyunLLM(BaseLLM):
             llm_config.validate_model(model)
 
         # 从配置获取 API key（如果未显式提供）
+        # 注意：QWEN_API_KEY 已通过 config.py 在启动时加载到环境变量
         if api_key is None:
             # 尝试从配置中获取 aliyun provider 的 API key
             api_key = llm_config.get_provider_api_key("aliyun")
             if not api_key:
-                # 回退到环境变量
+                # 回退到环境变量（已由 config.py 统一加载）
                 api_key = os.environ.get("QWEN_API_KEY", "")
 
         # Initialize BaseLLM with required fields

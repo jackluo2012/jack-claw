@@ -39,6 +39,11 @@ ENV/
 # Config (may contain secrets)
 config.yaml
 
+# Sensitive workspace config (contains API keys)
+data/workspace/.config/
+**/.config/feishu.json
+**/.config/baidu.json
+
 # Data
 data/
 
@@ -57,3 +62,4 @@ htmlcov/
 test_sdk.py
 data/workspace/.config
 baidu.json
+.jackclaw.pid
