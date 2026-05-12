@@ -63,3 +63,4 @@ test_sdk.py
 data/workspace/.config
 baidu.json
 .jackclaw.pid
+jackclaw_team/data

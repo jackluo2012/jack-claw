@@ -1,0 +1,13 @@
+services:
+  aio-sandbox-team:
+    image: ghcr.io/agent-infra/sandbox:latest
+    container_name: jackclaw-team-sandbox
+    ports:
+      - "8029:8080"
+    volumes:
+      # 29 课团队共享工作区 → 沙盒 /workspace
+      - ./workspace:/workspace:rw
+      # cron tasks.json 目录（沙盒内 skill 写 cron wake，宿主机 CronService 读）
+      - ./data/cron:/workspace/.cron:rw
+      # 可选：22 课公共 skill 作为 legacy，本 smoke 不挂
+    restart: unless-stopped

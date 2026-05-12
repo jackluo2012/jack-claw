@@ -221,9 +221,9 @@
                             "quotaInitTotal": 1000000.0,
                             "quotaValidityPeriod": 1780243200000,
                             "freeTierOnly": true,
-                            "quotaTotalPercentage": 100.0,
+                            "quotaTotalPercentage": 93.1,
                             "model": "qwen-long",
-                            "quotaTotal": 1000000.0,
+                            "quotaTotal": 930968.0,
                             "quotaStatus": "VALID"
                         },
                         {
@@ -374,9 +374,9 @@
                             "quotaInitTotal": 1000000.0,
                             "quotaValidityPeriod": 1780243200000,
                             "freeTierOnly": true,
-                            "quotaTotalPercentage": 99.99,
+                            "quotaTotalPercentage": 28.55,
                             "model": "qwen-turbo",
-                            "quotaTotal": 999905.0,
+                            "quotaTotal": 285488.0,
                             "quotaStatus": "VALID"
                         },
                         {
@@ -647,15 +647,6 @@
                             "quotaTotalPercentage": 100.0,
                             "model": "qwen3-235b-a22b-instruct-2507",
                             "quotaTotal": 1000000.0,
-                            "quotaStatus": "VALID"
-                        },
-                        {
-                            "quotaInitTotal": 1000000.0,
-                            "quotaValidityPeriod": 1780243200000,
-                            "freeTierOnly": true,
-                            "quotaTotalPercentage": 21.76,
-                            "model": "qwen-max-latest",
-                            "quotaTotal": 217595.0,
                             "quotaStatus": "VALID"
                         },
                         {
@@ -1067,9 +1058,9 @@
                             "quotaInitTotal": 1000000.0,
                             "quotaValidityPeriod": 1780243200000,
                             "freeTierOnly": true,
-                            "quotaTotalPercentage": 100.0,
+                            "quotaTotalPercentage": 95.75,
                             "model": "qwen-plus-latest",
-                            "quotaTotal": 1000000.0,
+                            "quotaTotal": 957526.0,
                             "quotaStatus": "VALID"
                         },
                         {
@@ -1094,9 +1085,9 @@
                             "quotaInitTotal": 1.0E+7,
                             "quotaValidityPeriod": 1780243200000,
                             "freeTierOnly": true,
-                            "quotaTotalPercentage": 94.57,
+                            "quotaTotalPercentage": 53.02,
                             "model": "qwen-turbo-1101",
-                            "quotaTotal": 9457291.0,
+                            "quotaTotal": 5301953.0,
                             "quotaStatus": "VALID"
                         },
                         {
@@ -1598,6 +1589,11 @@
                         },
                         {
                             "freeTierOnly": true,
+                            "model": "qwen-max-latest",
+                            "quotaStatus": "UNKNOWN"
+                        },
+                        {
+                            "freeTierOnly": true,
                             "model": "qwen-plus-2025-07-28",
                             "quotaStatus": "UNKNOWN"
                         },
@@ -1880,8 +1876,8 @@
                         }
                     ],
                     "freeTierQuotaOverview": {
-                        "modelsWithQuotaAbove50Percent": 177,
-                        "modelsWithZeroQuota": 34,
+                        "modelsWithQuotaAbove50Percent": 176,
+                        "modelsWithZeroQuota": 35,
                         "totalModelCount": 213,
                         "modelsWithQuotaBetween20And50Percent": 2,
                         "topThreeLeastQuotaModels": [
@@ -1898,24 +1894,24 @@
                                 "quotaInitTotal": 1000000.0,
                                 "quotaValidityPeriod": 1780243200000,
                                 "freeTierOnly": true,
-                                "quotaTotalPercentage": 21.76,
-                                "model": "qwen-max-latest",
-                                "quotaTotal": 217595.0,
+                                "quotaTotalPercentage": 28.55,
+                                "model": "qwen-turbo",
+                                "quotaTotal": 285488.0,
                                 "quotaStatus": "VALID"
                             },
                             {
-                                "quotaInitTotal": 1000000.0,
+                                "quotaInitTotal": 1.0E+7,
                                 "quotaValidityPeriod": 1780243200000,
                                 "freeTierOnly": true,
-                                "quotaTotalPercentage": 55.62,
-                                "model": "qwen3-max-2025-09-23",
-                                "quotaTotal": 556174.0,
+                                "quotaTotalPercentage": 53.02,
+                                "model": "qwen-turbo-1101",
+                                "quotaTotal": 5301953.0,
                                 "quotaStatus": "VALID"
                             }
                         ],
                         "modelsWithQuotaBetween0And20Percent": 0
                     },
-                    "taskId": "2677e05e-fac2-4a43-8da3-cb5175d045d4"
+                    "taskId": "38efef70-080b-4221-a5b4-fe9da8679c28"
                 },
                 "success": true
             }
@@ -1927,6 +1923,6 @@
         "errorMsg": ""
     },
     "httpStatusCode": "200",
-    "requestId": "6388ae9c-a6ea-41ce-b28e-06a54125b26e",
+    "requestId": "b4530343-c800-4bb2-afa3-3c0b3ed378ff",
     "successResponse": true
 }

@@ -1,0 +1,16 @@
+skills:
+  - name: product_design
+    type: reference
+    enabled: true
+  - name: review_tech_design_from_pm
+    type: reference
+    enabled: true
+  - name: self_retrospective
+    type: reference
+    enabled: true
+  - name: mailbox_ops
+    type: task
+    enabled: true
+  - name: self_score
+    type: reference
+    enabled: true

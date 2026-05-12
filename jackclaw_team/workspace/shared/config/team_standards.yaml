@@ -1,0 +1,12 @@
+# 团队标准阈值（SKILL.md 里用 {team_standards.XXX} 引用）
+pytest_coverage_min: 0.80
+review_max_rounds: 3
+review_insert_product_design:
+  min_entities: 3
+  min_apis: 7
+max_blast_radius: 5
+tier1_daily_limit: 3
+tier1_size_limit_lines: 200
+min_tasks_for_retro: 5
+self_repair_max_rounds: 3
+event_tail_window: 100

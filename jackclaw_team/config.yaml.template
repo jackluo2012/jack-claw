@@ -1,0 +1,39 @@
+workspace:
+  id: "jackclaw-team-smoke"
+  name: "JackClaw Team Smoke"
+
+# 飞书凭证（生产模式；smoke 时可留空走 --no-feishu）
+feishu:
+  app_id: "<YOUR_FEISHU_APP_ID>"
+  app_secret: "<YOUR_FEISHU_APP_SECRET>"
+
+agent:
+  # 可选模型（按 E2E 实测效果排序）：
+  #   - qwen3.6-max-preview  更强 tool calling + SOP 遵循；TC-F-007 sop 共创 E2E PASS
+  #   - qwen3-max            TC-F-001 happy_path E2E PASS
+  model: "qwen3.6-max-preview"
+  max_iter: 30
+  max_input_tokens: 30000
+  sub_agent_model: "qwen3.6-max-preview"
+  sub_agent_max_iter: 20
+  timeout_s: 300
+
+sandbox:
+  url: "http://localhost:8029/mcp"
+  workspace_dir: "/workspace"
+  timeout_s: 120
+  max_retries: 2
+
+memory:
+  workspace_dir: "./workspace"    # 29 课：4 角色共享这个根
+  ctx_dir: "./data/ctx"
+  db_dsn: "postgresql://jackclaw:jackclaw123@localhost:5432/jackclaw_memory"                       # 留空 → 跳过 pgvector 语义检索
+
+data_dir: "./data"
+
+team:
+  roles: ["manager", "pm", "rd", "qa"]
+
+# Qwen API Key 从环境变量读取：
+#   export QWEN_API_KEY=sk-xxx
+# 不要写在本文件里。

@@ -1,0 +1,25 @@
+skills:
+  - name: test_design
+    type: reference
+    enabled: true
+  - name: test_run
+    type: task
+    enabled: true
+  - name: review_product_design_from_qa
+    type: reference
+    enabled: true
+  - name: review_tech_design_from_qa
+    type: reference
+    enabled: true
+  - name: review_code
+    type: reference
+    enabled: true
+  - name: self_retrospective
+    type: reference
+    enabled: true
+  - name: mailbox_ops
+    type: task
+    enabled: true
+  - name: self_score
+    type: reference
+    enabled: true

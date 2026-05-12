@@ -1,0 +1,41 @@
+skills:
+  - name: sop_feature_dev
+    type: reference
+    kind: sop
+    enabled: true
+  - name: sop_cocreate_guide
+    type: reference
+    enabled: true
+  - name: sop_write
+    type: reference
+    enabled: true
+  - name: list_available_sops
+    type: reference
+    enabled: true
+  - name: requirements_guide
+    type: reference
+    enabled: true
+  - name: requirements_write
+    type: reference
+    enabled: true
+  - name: read_project_state
+    type: reference
+    enabled: true
+  - name: check_review_criteria
+    type: reference
+    enabled: true
+  - name: handle_checkpoint_reply
+    type: reference
+    enabled: true
+  - name: team_retrospective
+    type: reference
+    enabled: true
+  - name: review_proposal
+    type: reference
+    enabled: true
+  - name: mailbox_ops
+    type: task
+    enabled: true
+  - name: self_score
+    type: reference
+    enabled: true
