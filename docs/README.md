@@ -1,23 +1,53 @@
-# JackClaw
+# JackClaw 文档中心
 
-飞书本地工作助手（MVP 重写版）
+欢迎来到 JackClaw 文档中心！
 
-基于 JackClaw 重写，通过 6 个阶段迭代实现核心功能。
+## 📚 文档导航
 
-## 特性
+### 快速开始
+- **[5分钟快速开始](../QUICKSTART.md)** - 最快上手 JackClaw 的方式
+- **[项目主 README](../README.md)** - 项目概述和基础配置
 
-- 飞书全场景接入：单聊、群聊、话题群
-- 消息串行处理：per-routing_key 队列
-- Agent 调度：通义千问 LLM
-- Skills 生态：PDF/Word/Excel 处理
-- 定时任务：at/every/cron 三种模式
-- 可观测性：日志 + Prometheus 指标
+### 用户指南
+- **[完整用户指南](USER_GUIDE.md)** - 详细的配置、使用和故障排查指南
+- **[项目概览](PROJECT_OVERVIEW.md)** - 深入了解项目架构和两个核心模块
 
-## 快速开始
+### 开发文档
+- **[安全说明](SECURITY.md)** - 安全架构和最佳实践
 
-```bash
-pip install -e .
-cp config.yaml.template config.yaml
-# 编辑 config.yaml，设置飞书凭证
-jackclaw
+## 🚀 按场景查找
+
+### 我想快速体验
+→ 阅读 [5分钟快速开始](../QUICKSTART.md)
+
+### 我想了解两个模块的区别
+→ 阅读 [项目概览](PROJECT_OVERVIEW.md) 的对比章节
+
+### 我遇到了问题
+→ 阅读 [用户指南](USER_GUIDE.md) 的故障排查章节
+
+### 我想深入定制
+→ 阅读 [项目概览](PROJECT_OVERVIEW.md) 的扩展性章节
+
+## 📖 文档结构
+
 ```
+docs/
+├── README.md              # 本文件（文档导航）
+├── USER_GUIDE.md          # 完整用户指南
+├── PROJECT_OVERVIEW.md    # 项目技术概览
+└── SECURITY.md            # 安全说明
+```
+
+## 🔗 外部资源
+
+- **GitHub 仓库**: https://github.com/jackluo2012/jack-claw
+- **飞书开放平台**: https://open.feishu.cn/
+- **阿里云百炼**: https://bailian.console.aliyun.com/
+
+## 💡 文档贡献
+
+欢迎改进文档！你可以：
+1. 直接提交 Pull Request
+2. 在 Issues 中提出文档改进建议
+3. 分享你的使用经验
