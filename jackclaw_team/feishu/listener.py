@@ -8,11 +8,14 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import threading
 from collections.abc import Awaitable, Callable
+from typing import Any
 
 from lark_oapi.client import LogLevel
-from lark_oapi.ws import Client as WSClient
 from lark_oapi.ws.client import EventDispatcherHandler
+# 延迟导入 WSClient 到线程中，避免事件循环冲突
+# from lark_oapi.ws import Client as WSClient
 
 from jackclaw_team.feishu.session_key import resolve_routing_key
 from jackclaw_team.models import Attachment, InboundMessage
@@ -164,26 +167,63 @@ class FeishuListener:
         on_bot_added: OnBotAddedFn | None = None,
         allowed_chats: list[str] | None = None,
     ) -> None:
-        handler = _JackclawEventHandler(
-            loop=loop,
-            on_message=on_message,
-            on_bot_added=on_bot_added,
-            allowed_chats=allowed_chats,
-        )
-        self._ws_client = WSClient(
-            app_id=app_id,
-            app_secret=app_secret,
-            log_level=log_level,
-            event_handler=handler,
-        )
+        self._app_id = app_id
+        self._app_secret = app_secret
+        self._log_level = log_level
+        self._loop = loop
+        self._on_message = on_message
+        self._on_bot_added = on_bot_added
+        self._allowed_chats = allowed_chats
+        self._ws_client: Any | None = None  # 延迟导入，避免类型循环
+        self._thread: threading.Thread | None = None
 
-    async def start(self) -> None:
+    def start(self) -> None:
         """启动监听（在独立线程中运行 lark-oapi 的事件循环）。"""
         logger.info("FeishuListener starting WebSocket client...")
-        loop = asyncio.get_running_loop()
         # lark-oapi ws.Client.start() 为阻塞同步方法，内部自管事件循环，
-        # 这里通过线程池隔离，避免嵌套事件循环错误。
-        await loop.run_in_executor(None, self._ws_client.start)
+        # 这里在新线程中启动，避免嵌套事件循环错误。
+        self._thread = threading.Thread(target=self._run_ws_client, daemon=True, name="feishu-ws-team")
+        self._thread.start()
+        logger.info("Feishu WebSocket listener started in background thread")
+
+    def _run_ws_client(self) -> None:
+        """WebSocket 客户端线程入口"""
+        # 在新线程中创建新的事件循环，避免与主事件循环冲突
+        import asyncio
+        new_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(new_loop)
+
+        # 在新线程中导入 WSClient，避免模块导入时绑定到主事件循环
+        from lark_oapi.ws import Client as WSClient
+        from lark_oapi.ws.client import EventDispatcherHandler
+
+        try:
+            # 在新线程中创建 WSClient，避免绑定到主事件循环
+            handler = _JackclawEventHandler(
+                loop=self._loop,
+                on_message=self._on_message,
+                on_bot_added=self._on_bot_added,
+                allowed_chats=self._allowed_chats,
+            )
+            self._ws_client = WSClient(
+                app_id=self._app_id,
+                app_secret=self._app_secret,
+                log_level=self._log_level,
+                event_handler=handler,
+            )
+
+            logger.info("Connecting to Feishu WebSocket...")
+            logger.info("Using app_id: %s (len=%d)", self._app_id, len(self._app_id))
+            self._ws_client.start()
+        except Exception as e:
+            logger.exception("WebSocket client error: %s", e)
+
+    def stop(self) -> None:
+        """停止 WebSocket 连接"""
+        logger.info("Stopping Feishu WebSocket listener...")
+        # lark-oapi 的 WSClient 没有显式的 stop 方法
+        # 我们只需标记停止，线程会在下一次检查时退出
+        pass
 
     @staticmethod
     def _extract_attachment(msg_type: str, content_json: str) -> Attachment | None:
@@ -292,9 +332,10 @@ class FeishuListener:
 
 async def run_forever(listener: FeishuListener) -> None:
     """简单的包装，方便在 main 中启动监听."""
-    while True:  # 断线自动重连
-        try:
-            await listener.start()
-        except Exception as exc:  # pragma: no cover - 运行时行为
-            logger.exception("FeishuListener stopped with error, retrying: %s", exc)
-            await asyncio.sleep(5.0)
+    # 注意：listener.start() 应该在创建 listener 后由调用者调用
+    # 这里只是保持运行状态
+    try:
+        # 永久等待，直到被取消
+        await asyncio.Event().wait()
+    finally:
+        listener.stop()

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Protocol
+import uuid
 
 @dataclass(frozen=True)
 class Attachment:
@@ -13,7 +14,7 @@ class Attachment:
     file_key: str  # 飞书 file_key / image_key
     file_name: str  # 文件名（image 无文件名时用 "{image_key}.jpg"）
 
-@dataclass
+@dataclass(frozen=True)
 class InboundMessage:
     """框架内流转的标准化消息对象"""
 
@@ -27,6 +28,7 @@ class InboundMessage:
     attachment: Attachment | None = None
     # 29 课新增：wake_reason ∈ {"feishu", "new_mail", "heartbeat"}；供 Runner 去重
     meta: dict = field(default_factory=dict)
+    trace_id: str = field(default_factory=lambda: uuid.uuid4().hex[:16])
 
 class SenderProtocol(Protocol):
     """FeishuSender 和 CaptureSender 共同实现的协议"""

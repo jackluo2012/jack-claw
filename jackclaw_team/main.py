@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from dotenv import load_dotenv
 
 from jackclaw_team.agents.build import build_team_agent_fn, wrap_with_lock
 from jackclaw_team.cron import tasks_store
@@ -28,16 +29,59 @@ from jackclaw_team.cron.service import CronService
 from jackclaw_team.models import SenderProtocol
 from jackclaw_team.runner import Runner
 from jackclaw_team.session.manager import SessionManager
+
+# 预加载 lark-oapi 模块，避免在事件循环运行时导入
+try:
+    from lark_oapi.ws import client as ws_client_module
+except ImportError:
+    pass
+
 logger = logging.getLogger(__name__)
 
 ROLES = ("manager", "pm", "rd", "qa")
 HEARTBEAT_INTERVAL_MS = 30_000
 HEARTBEAT_STAGGER_MS = (0, 7_000, 14_000, 21_000)
 
+# 加载 .env 文件
+def _find_dotenv() -> Path | None:
+    """从本文件位置向上查找 .env"""
+    try:
+        base = Path(__file__).resolve().parent.parent
+    except Exception:
+        base = Path.cwd()
+    candidates = [base / ".env", base.parent / ".env"]
+    for p in candidates:
+        if p.exists():
+            return p
+    return None
+
+_dotenv_path = _find_dotenv()
+if _dotenv_path:
+    load_dotenv(_dotenv_path)
+
 def load_config(config_path: Path) -> dict[str, Any]:
     if not config_path.exists():
         raise FileNotFoundError(f"config.yaml not found at {config_path}")
-    return yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    return _expand_env_vars(data)
+
+def _expand_env_vars(obj):
+    """递归替换 ${VAR} 和 ${VAR:-default} 为环境变量值"""
+    if isinstance(obj, str):
+        dollar = "${"
+        if obj.startswith(dollar) and obj.endswith("}"):
+            inner = obj[2:-1]
+            # 支持 ${VAR:-default} 语法
+            if ":-" in inner:
+                var_name, _, default = inner.partition(":-")
+                return os.environ.get(var_name, default)
+            return os.environ.get(inner, "")
+        return obj
+    elif isinstance(obj, dict):
+        return {k: _expand_env_vars(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [_expand_env_vars(item) for item in obj]
+    return obj
 
 def register_heartbeats(
     tasks_path: Path,
@@ -194,12 +238,23 @@ async def async_main() -> None:
     if sender is None:
         raise RuntimeError("feishu credentials missing; use --no-feishu for cron-only mode")
 
+    # 从配置中获取飞书凭证
+    feishu_cfg = cfg.get("feishu", {})
+    app_id = feishu_cfg.get("app_id", "")
+    app_secret = feishu_cfg.get("app_secret", "")
+    if not app_id or not app_secret:
+        raise RuntimeError("feishu app_id/app_secret missing in config")
+
     from jackclaw_team.feishu.listener import FeishuListener, run_forever  # type: ignore
 
     listener = FeishuListener(
-        client=sender.client,  # type: ignore[attr-defined]
-        dispatch_fn=runner.dispatch,
+        app_id=app_id,
+        app_secret=app_secret,
+        on_message=runner.dispatch,
+        loop=asyncio.get_event_loop(),
     )
+    # 启动飞书监听器（必须在 run_forever 之前调用）
+    listener.start()
     try:
         await run_forever(listener)
     finally:

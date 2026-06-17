@@ -20,3 +20,6 @@ def resolve_routing_key(
     if thread_id:
         return f"thread:{chat_id}:{thread_id}"
     return f"group:{chat_id}"
+
+def routing_type(routing_key: str) -> str:
+    return routing_key.split(":")[0] if ":" in routing_key else "unknown"

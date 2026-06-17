@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: jackclaw
       POSTGRES_PASSWORD: jackclaw123
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       # 💡 核心点：schema.sql 放在 initdb 目录，容器首次启动时自动执行
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
